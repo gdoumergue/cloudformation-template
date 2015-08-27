@@ -60,7 +60,7 @@
     },
     "15AmazonAvailabilityZone": {
 
-      "Value": {"Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWSRegion" }  } ] },
+      "Value": {"Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" }  } ] },
       "Description": "Assign this value to AWS Ops Manager Director->Create Availability Zones->Amazon Availability Zone"
     },
     "16NetworkName":{
@@ -102,7 +102,7 @@
     },
    "AWSAZ": {
       "Description": "AWS AZ selected",
-      "Value": {"Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWSRegion" }  } ] }
+      "Value": {"Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" }  } ] }
 
     },
    "PrivateSubnetAZ1" : {
@@ -189,11 +189,6 @@
       "Description": "Enter Ops Manager AMI"
     },
    
-    "AWSRegion": {
-      "Type": "String",
-      "Default": "us-east-1",
-      "Description": "AWS Region"
-    },
     "NatInstanceType": {
       "AllowedValues": [
         "t2.micro",
@@ -622,7 +617,7 @@
     },
     "PrivateSubnetAZ1": {
       "Properties": {
-        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWSRegion" }} ] },
+        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" }} ] },
         "CidrBlock": "10.0.16.0/20",
         "VpcId": {
           "Ref": "PCFVPC"
@@ -669,7 +664,7 @@
     },
     "PublicSubnetAZ1": {
       "Properties": {
-        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" :  { "Ref" : "AWSRegion" } } ] },
+        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" :  { "Ref" : "AWS::Region" } } ] },
         "CidrBlock": "10.0.0.1/24",
         "VpcId": {
           "Ref": "PCFVPC"
@@ -686,7 +681,7 @@
     },
     "rds1": {
       "Properties": {
-        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" :  { "Ref" : "AWSRegion" } } ] },
+        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" :  { "Ref" : "AWS::Region" } } ] },
         "CidrBlock": "10.0.2.0/24",
         "VpcId": {
           "Ref": "PCFVPC"
@@ -702,7 +697,7 @@
     },
     "rds2": {
       "Properties": {
-        "AvailabilityZone": { "Fn::Select" : [ "1", { "Fn::GetAZs" :  { "Ref" : "AWSRegion" } } ] },
+        "AvailabilityZone": { "Fn::Select" : [ "1", { "Fn::GetAZs" :  { "Ref" : "AWS::Region" } } ] },
         "CidrBlock": "10.0.3.0/24",
         "VpcId": {
           "Ref": "PCFVPC"

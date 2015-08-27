@@ -8,7 +8,7 @@
       "Description" : "The public DNS name of your OpsManger"
     },
     "ElasticLoadBalancer" : {
-      "Description": "The DNSName of the PCF Elastic Load Balancer",  
+      "Description": "The DNSName of the PCF Elastic Load Balancer",
       "Value" : { "Fn::GetAtt" : [ "ElasticLoadBalancer", "DNSName" ]}
    },
     "00DirectorConfigs": {
@@ -47,7 +47,7 @@
       "Description" : "Copy value to Director Config->Director Config->Amazon S3->Secret Key"
     },
     "15AmazonAvailabilityZone": {
-      "Value": {"Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWSRegion" }  } ] },
+      "Value": {"Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" }  } ] },
       "Description": "Copy value to Create Availability Zones->Amazon Availability Zone"
     },
     "16NetworkName":{
@@ -136,11 +136,6 @@
       "Description": "Enter Ops Manager AMI"
     },
 
-    "AWSRegion": {
-      "Type": "String",
-      "Default": "us-east-1",
-      "Description": "AWS Region"
-    },
     "NatInstanceType": {
       "AllowedValues": [
         "t2.micro",
@@ -530,7 +525,7 @@
     },
     "PrivateSubnetAZ1": {
       "Properties": {
-        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWSRegion" }} ] },
+        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" }} ] },
         "CidrBlock": "10.0.16.0/20",
         "VpcId": {
           "Ref": "PCFVPC"
@@ -577,7 +572,7 @@
     },
     "PublicSubnetAZ1": {
       "Properties": {
-        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" :  { "Ref" : "AWSRegion" } } ] },
+        "AvailabilityZone": { "Fn::Select" : [ "0", { "Fn::GetAZs" :  { "Ref" : "AWS::Region" } } ] },
         "CidrBlock": "10.0.0.1/24",
         "VpcId": {
           "Ref": "PCFVPC"
